@@ -5,4 +5,6 @@ package handler;
  */
 public interface IHandler {
     String handle(String value);
+
+    void setNext(IHandler handler);
 }

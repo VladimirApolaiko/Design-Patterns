@@ -3,16 +3,17 @@ package handler.impl;
 
 import handler.IHandler;
 
-import java.util.List;
-
 public abstract class BaseHandler implements IHandler {
 
-    public static IHandler buildChain(List<BaseHandler> handlers) {
-        BaseHandler first = handlers.get(0);
-        BaseHandler current = first;
-        for (int i = 0; i < handlers.size() - 1; i++) {
-            current.setNext(handlers.get(i + 1));
-            current = handlers.get(i + 1);
+    public static IHandler buildChain(IHandler... handlers) {
+        IHandler first = handlers[0];
+        IHandler current = first;
+
+        for (int i = 0; i < handlers.length - 1; i++) {
+            IHandler nextHandler = handlers[i + 1];
+
+            current.setNext(nextHandler);
+            current = nextHandler;
         }
 
         return first;

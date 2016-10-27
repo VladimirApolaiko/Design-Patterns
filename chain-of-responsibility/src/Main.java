@@ -1,10 +1,8 @@
-import handler.*;
+import handler.IHandler;
 import handler.impl.BaseHandler;
 import handler.impl.OneNumberHandler;
-import handler.impl.TwoNumberHandler;
 import handler.impl.ThreeNumberHandler;
-
-import static java.util.Arrays.asList;
+import handler.impl.TwoNumberHandler;
 
 /**
  * Created by vladimir on 10/25/16.
@@ -12,7 +10,7 @@ import static java.util.Arrays.asList;
 public class Main {
     public static void main(String[] args) {
 
-        IHandler handlersChain = BaseHandler.buildChain(asList(new TwoNumberHandler(), new OneNumberHandler(), new ThreeNumberHandler()));
+        IHandler handlersChain = BaseHandler.buildChain(new TwoNumberHandler(), new OneNumberHandler(), new ThreeNumberHandler());
 
         System.out.println(handlersChain.handle("hello"));
     }
